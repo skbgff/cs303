@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <stack>
+using namespace std;
+
+string reverse_line(string line) {
+    stack<string> s;
+    stringstream ss(line);
+    string str;
+    while (ss >> str) {
+        s.push(str);
+    }
+    string result;
+    while (!s.empty()) {
+        result += s.top();
+        s.pop();
+        if (!s.empty()) {
+            result += " ";
+        }
+    }
+    return result;
+}
+
+int main() {
+    string line;
+    cout << "Enter a line: ";
+    getline(cin, line);
+    cout << "string in reverse is " << reverse_line(line) << endl;
+    return 0;
+}
