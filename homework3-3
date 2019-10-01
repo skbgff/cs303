@@ -4,28 +4,30 @@
 #include <stack>
 using namespace std;
 
-string reverse_line(string line) {
-    stack<string> s;
-    stringstream ss(line);
-    string str;
-    while (ss >> str) {
-        s.push(str);
-    }
-    string result;
-    while (!s.empty()) {
-        result += s.top();
-        s.pop();
-        if (!s.empty()) {
-            result += " ";
-        }
-    }
-    return result;
+//function for reversing string
+string ReverseString(string line) {
+	stack<string> words;
+	stringstream ss(line);
+	string str;
+	while (ss >> str) {
+		words.push(str);
+	}
+
+	string result;
+	while (!words.empty()) {
+		result += words.top();
+		words.pop();
+		if (!words.empty()) {
+			result += " ";
+		}
+	}
+	return result;
 }
 
 int main() {
-    string line;
-    cout << "Enter a line: ";
-    getline(cin, line);
-    cout << "string in reverse is " << reverse_line(line) << endl;
-    return 0;
+	string line;
+	cout << "Enter a string of letters. ";
+	getline(cin, line);
+	cout << "The reverse of this string is: " << ReverseString(line) << endl;
+	system("pause");
 }
