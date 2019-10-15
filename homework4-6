@@ -1,0 +1,99 @@
+#include <iostream>
+#include <iterator> 
+#include <list>
+#include <ctime>
+#include <string>
+
+using namespace std;
+
+template <typename T>
+void Insert(list<T> &a)
+{
+    //Changed list<> template parameter to T to reflect the template parameter.
+    list<T> result;
+  
+    result.push_front(a.front());
+    a.pop_front();
+  
+    while (a.size())
+    {
+        // First, handle the degenerate cases where the new values goes on
+        if (a.front() < result.front()) {
+            result.push_front(a.front());
+          
+        } else if (a.front() > result.back()) {
+            result.push_back(a.front());
+          
+        } else {
+            // Now handle the case in which the new value is 'embedded', in the result list.
+            size_t k = result.size();
+            size_t i = 0;
+            for (i = 0; i < k; ++i)
+            {
+                if (a.front() < result.front())
+                {
+                    result.push_back(a.front());
+                    break;
+             }
+                result.push_back(result.front());
+              result.pop_front();
+            }   // for (i = 0; i < k; ++i)
+            // Finish rotating the result list.
+            while (i < k)
+            {
+                result.push_back(result.front());
+              result.pop_front();
+              ++i;
+            }   // for (i = 0; i < k; ++i)
+        }   // if (a.front() < result.front())
+        a.pop_front();
+    }   // while (k < n)
+
+    //Copy the sorted result over the initial list.
+    a = result;
+}
+
+//the displayList displays the list from the list container.
+template <class T>
+void displayList(list<T> &x)
+{
+    if(x.empty())
+        cout << "Empty List.";
+    else
+    {
+        ostream_iterator<T> output(cout, " ");
+        copy(x.begin(), x.end(), output);
+    }
+}
+
+//Main must resturn a int
+int main ()
+{
+    int i, Number;
+    list <int> dataC;
+
+    //Ask the user to input
+    cout << "Number of intergers that you would like to sort? ";
+    cin >> Number;
+
+    cout << "The list before being sorted by the insertion sort. " << endl;
+    for(i = 0; i < Number; i++)
+    {
+        //Inserts random elements from the back of the list.
+        dataC.push_back(rand()%100);
+    }
+
+  
+    //and prints out the list dataC to the screen
+    displayList(dataC);
+    cout << endl << endl;
+
+    // Performs the insertion sort on the list dataC and then prints
+    // Out the sorted list to the screen
+    Insert(dataC);
+  
+    displayList(dataC);
+    cout << endl << endl;
+  
+    return 0;
+}
