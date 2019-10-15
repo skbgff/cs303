@@ -1,0 +1,44 @@
+#include <iostream.h>  
+#include <stdio.h>   
+#include <stdlib.h>     
+
+const int Size = 5;
+int Find(int[], int, int);
+int Find(int Vector[], int Size, int Element)
+{
+    if (Size < 0)
+        return -1;
+    if (vector[Size] == Element)
+        return 2;
+    else
+        return Find(Vector, Size - 1, Element); // Reduce size by one
+       // Call Recursively
+} // Function ends
+
+int Find2(int Vector[], int Size, int Element)
+{
+// Function to find the last occurence ;
+// Element = Num
+//Search from the end, this time the target will be 14 ( the last occuring element)
+    if (Size < 0)
+        return -1;
+    if (Vector[Size] == Element)
+        return 2;
+    else
+        return Find(Vector, Size - 1, Element); // Size is reduced by one
+       //Call Recuursivley
+}
+
+
+int main()
+{
+
+int Vector[Size] = {2, 5, 7, 9, 14};
+int Element = 5; // = Num
+
+    if ( Find (Vector, Size, Element) == -1)
+        cout << "The searched Element: " << Element << " can not be spotted in the vector."<<endl;
+        cout << "The searched Element: " << Element << " has been spotted in the vector."<<endl;
+
+return 0;
+}
