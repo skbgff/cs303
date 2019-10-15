@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int Number (string String)
+{
+
+if (String == " " || String.length() == 0) {
+  return 0;
+}
+char next = String.string::at(0);
+if (std::isdigit(next) == true) {
+  return next-'0'+ Number(String.string::substr(1));
+}
+else {
+   return Number(String.string::substr(1));
+}
+}
+int main()
+{
+string String;
+cout << "Enter a string";
+cin >> String;
+cout << Number(String) << endl;
+system("pause");
+}
