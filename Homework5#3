@@ -1,0 +1,4 @@
+int sum (tNode *node) {
+    if (node == 0) return 0;
+    return node->value + sum (node->left) + sum (node->right);
+}
