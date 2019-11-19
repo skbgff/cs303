@@ -1,0 +1,79 @@
+Class ComparePerson
+
+{
+
+int dependents;                               // To store number of dependents for each person
+
+public void compare(int[]);          // To compare dependents of each person.
+
+}
+
+Class Students
+
+{
+
+Public static void main(String args[])
+
+{
+
+Random random=new Random();
+
+ComparePerson[] person=new ComparePerson[10]; // Declare 10 persons
+
+ComparePerson compareDependents; // Object for calling compare function
+
+int arr[]=new int[10];    
+
+for (int i=0;i<10;i++)
+
+person[i]= new ComparePerson();          // Initialise memory for 10 persons
+
+System.out.println(“Enter number of dependednts for each person”);
+
+for (int i=0;i<10;i++)
+
+person[i].dependents=random.nextInt(50); //To generate random number for dependents
+
+for(int i=0;i<10;i++)
+
+arr[i]=person[i].dependents;     // Store all person dependents into an array to do comparison
+
+CompareDependents.compare(arr);
+
+}
+
+Public void compare(int[] arr)
+
+{
+
+int temp;
+
+for (int i = 0; i < 10; i++)     // sorts the person dependents in ascending order
+
+        {
+
+            for (int j = i + 1; j < 10; j++)
+
+            {
+
+                if (a[i] > a[j])
+
+                {
+
+                    temp = arr[i];
+
+                    arr[i] = arr[j];
+
+                    arr[j] = temp;
+
+                }
+
+            }
+
+        }
+
+System.out,println(“Person with largest dependent is:”+arr[i-1]); // display the person with largest
+
+}
+
+}
